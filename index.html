@@ -2,8 +2,63 @@
 <html>
 	<head>
 		<title>Scinna website</title>
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<link rel="stylesheet" href="assets/css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
-		<p>This is a test page until I get the time to build a real website</p>
+		<nav role="navigation">
+			<div class="nav-wrapper container">
+				<a id="logo-container" class="brand-logo">
+					<img src="assets/img/logo.png" href="/"/>
+				</a>
+
+				<ul class="right hide-on-med-and-down">
+					<li><a href="#whatisit">What is it?</a></li>
+					<li><a href="#download">Download</a></li>
+					<li><a href="#guide">Setup</a></li>
+					<li><a href="#contribute">Contribute</a></li>
+				</ul>
+
+				<ul  id="nav-mobile" class="sidenav">
+					<li>
+						<a id="logo-container" style="margin: 1em auto">
+							<img src="assets/img/logo.png" href="/" style="width: 100%"/>
+						</a>
+					</li>
+
+
+					<li><a href="#whatisit">What is it?</a></li>
+					<li><a href="#download">Download</a></li>
+					<li><a href="#guide">Setup</a></li>
+					<li><a href="#contribute">Contribute</a></li>			
+				</ul>
+
+				<a class="sidenav-trigger" href="#" data-target="nav-mobile">
+					<i class="material-icons">menu</i>
+				</a>
+			</div>
+		</nav>
+
+		<div id="index-banner" class="section no-pad-bot">
+			<div class="container">
+				<div class="row center">
+					<h5 class="header col s12 light">This website is being crafted.</h5>
+				</div>
+				<div class="row center">
+					<a id="github-link" class="btn waves-effect waves-light" href="https://github.com/scinna">Find us on Github</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var elems = document.querySelectorAll('.sidenav');
+				var instances = M.Sidenav.init(elems, {});
+			});
+		</script>
 	</body>
 </html>
