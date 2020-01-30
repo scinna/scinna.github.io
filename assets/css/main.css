@@ -2,6 +2,24 @@
     --nav-bg: linear-gradient(90deg, rgba(37,63,95,1) 0%, rgba(47,76,117,1) 15%, rgba(78,83,133,1) 26%, rgba(68,73,114,1) 38%, rgba(77,68,114,1) 53%, rgba(76,55,121,1) 61%, rgba(46,60,103,1) 72%, rgba(33,93,121,1) 90%, rgba(36,93,123,1) 100%);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/** Styling links **/
+a[href*="//"]:not([href*="janczewski.fr"]) {
+    color: black;
+    background-image: linear-gradient(90deg, rgba(226,203,255,1) 0%, rgba(202,161,255,1) 50%, rgba(226,203,255,1) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.15s ease-in;
+}
+
+a[href*="//"]:not([href*="janczewski.fr"]):hover {
+    background-size: 100% 88%;
+}
+
 nav {
     background: var(--nav-bg);
 }
@@ -17,18 +35,66 @@ nav {
     height: 75%;
 }
 
-/** Temporary **/
-#index-banner {
-    height: calc(100vh - 64px);
+#whatisit {
+    height: 50vh;
+    background-color: #263238;
+    color: white;
+
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
 }
 
-#index-banner .container {
+#whatisit .container {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+#whatisit p {
+    color: #9eaeb5;
+    font-size: 1.2em;
+}
+
 #github-link {
     background: #333335;
+}
+
+#why {
+    position: relative;
+}
+
+#why::before, #why::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+	-webkit-transform: translateX(-50%) rotate(45deg);
+	transform: translateX(-50%) rotate(45deg);
+}
+
+#why::before {
+    bottom: -50px;
+	background: #fff;
+}
+
+#why::after {
+    bottom: -50px;
+	z-index: 10;
+	background: inherit;
+}
+
+#why .card .card-image img {
+    height: 5em;
+}
+
+#why .card .card-content {
+    text-align: justify;
+}
+
+#download {
+    background: #efefef;
+    height: 50vh;
+    box-shadow: inset 1px 1px 5px 0px;
 }
