@@ -95,6 +95,20 @@ nav {
 
 #download {
     background: #efefef;
-    height: 50vh;
     box-shadow: inset 1px 1px 5px 0px;
+}
+
+#download .container {
+    padding: 3em 0 3em 0;
+}
+
+#download .card-action {
+    display: flex;
+    justify-content: space-around;
+}
+
+#download .card-action a {
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
