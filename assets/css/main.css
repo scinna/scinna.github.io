@@ -6,12 +6,12 @@ html {
     scroll-behavior: smooth;
 }
 
-/** Styling links **/
+/** General style **/
 a[href*="//"]:not([href*="janczewski.fr"]) {
     color: black;
     background-image: linear-gradient(90deg, rgba(226,203,255,1) 0%, rgba(202,161,255,1) 50%, rgba(226,203,255,1) 100%);
     background-repeat: no-repeat;
-    background-size: 100% 0.2em;
+    background-size: 100% 0.1em;
     background-position: 0 88%;
     transition: background-size 0.15s ease-in;
 }
@@ -20,6 +20,27 @@ a[href*="//"]:not([href*="janczewski.fr"]):hover {
     background-size: 100% 88%;
 }
 
+pre {
+    margin: 2em;
+    padding: 1em;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+code.pre {
+    padding: .25em;
+}
+
+pre, code.pre {
+    background: #eff0f1;
+    border-radius: 5px;
+    box-shadow: inset 0 0 2px;
+}
+
+/** Content specific style **/
 nav {
     background: var(--nav-bg);
 }
@@ -54,6 +75,67 @@ nav {
     color: #9eaeb5;
     font-size: 1.2em;
 }
+
+/** Hacky hack but can't find another way to do this... **/
+
+.pictparent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#pictures img:first-child {
+    top: 0;
+    left: 0;
+}
+
+#pictures {
+    position: relative;
+
+    width: calc(192px + 2em);
+    height: calc(108px + 2em);
+}
+
+#pictures img {
+    position: absolute;
+
+    width: 192px;
+    height: 108px;
+}
+
+#pictures img:nth-child(2) {
+    top: 1em;
+    left: 1em;
+}
+
+#pictures img:last-child {
+    top: 2em;
+    left: 2em;
+}
+
+@media screen and (min-width: 900px) {
+    #pictures {
+        width: calc(240px + 4em);
+        height: calc(135px + 4em);
+    }
+    
+    #pictures img {
+        width: 240px;
+        height: 135px;
+    }
+    
+    #pictures img:nth-child(2) {
+        top: 2em;
+        left: 2em;
+    }
+    
+    #pictures img:last-child {
+        top: 4em;
+        left: 4em;
+    }
+}
+
+/** No more hacky hack thingy things **/
 
 #github-link {
     background: #333335;
@@ -111,4 +193,47 @@ nav {
     text-align: center;
     margin: 0;
     padding: 0;
+}
+
+#guide {
+    min-height: 300px;
+    background: white;
+    padding-bottom: 7em;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+}
+
+#guide .container {
+    max-width: 750px;
+    text-align: justify;
+}
+
+#guide #tutorial ul li{
+    margin-left: 3em;
+}
+
+#contribute {
+    box-sizing: content-box;
+    height: 50vh;
+    margin-top: -300px;
+    padding-top: 300px;
+
+    background-color: #263238;
+    color: white;
+}
+
+#contribute > div {
+    height: 100%;
+}
+
+#contribute a {
+    color: #fff;
+}
+
+
+#love {
+    background-color: #263238;
+}
+
+#love span, #love a {
+    color: white;
 }
