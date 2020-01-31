@@ -6,7 +6,9 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 		<link rel="stylesheet" href="assets/css/main.css">
+
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta charset="utf-8" />
 	</head>
 	<body>
 		<nav role="navigation">
@@ -46,8 +48,12 @@
 		<div id="whatisit" class="section no-pad-bot">
 			<div class="container">
 				<div class="row">
-					<div class="col s12 m6 center">
-						<p>Scinna pictures</p>
+					<div class="col s12 m6 pictparent">
+						<div id="pictures">
+							<img src="assets/img/osx.jpg" />
+							<img src="assets/img/w10.jpg" />
+							<img src="assets/img/arch.jpg" />
+						</div>
 					</div>
 					<div class="col s12 m6">
 						<h3>Scinna</h3>
@@ -67,7 +73,7 @@
 						<div class="col s12 m6 l4">
 							<div class="card">
 								<div class="card-image">
-										<img src="https://www.cottodeste.fr/media/immagini/185_n_COTTODESTE-BLACK-WHITE-black-minimale.jpg"/>
+										<img src="assets/img/sandstone_dark.png"/>
 									<span class="card-title">Cross-platform</span>
 								</div>
 								<div class="card-content">
@@ -78,18 +84,18 @@
 						<div class="col s12 m6 l4">
 							<div class="card">
 								<div class="card-image">
-										<img src="https://www.cottodeste.fr/media/immagini/185_n_COTTODESTE-BLACK-WHITE-black-minimale.jpg"/>
+										<img src="assets/img/sandstone_dark.png"/>
 									<span class="card-title">Self-hosted</span>
 								</div>
 								<div class="card-content">
-									Featuring a web-ui, for privacy and preservation purposes.
+									For privacy and preservation purposes. Also features a web-ui to use it without any client. 
 								</div>
 							</div>
 						</div>
 						<div class="col s12 m6 l4">
 							<div class="card">
 								<div class="card-image">
-										<img src="https://www.cottodeste.fr/media/immagini/185_n_COTTODESTE-BLACK-WHITE-black-minimale.jpg"/>
+										<img src="assets/img/sandstone_dark.png"/>
 									<span class="card-title">Your domain</span>
 								</div>
 								<div class="card-content">
@@ -98,9 +104,20 @@
 							</div>
 						</div>
 						<div class="col s12 m6 l4">
+							<div class="card">
+								<div class="card-image">
+										<img src="assets/img/sandstone_dark.png"/>
+									<span class="card-title">Plugins !</span>
+								</div>
+								<div class="card-content">
+									The toolbox in ShareX is amazing. That's the perfect place to have such small tools but we would have wanted to extend it.
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m6 l4">
 								<div class="card">
 									<div class="card-image">
-										<img src="https://www.cottodeste.fr/media/immagini/185_n_COTTODESTE-BLACK-WHITE-black-minimale.jpg"/>
+										<img src="assets/img/sandstone_dark.png"/>
 										<span class="card-title">Opensource</span>
 									</div>
 									<div class="card-content">
@@ -120,10 +137,10 @@
 						<div class="card blue-grey darken-1">
 							<div class="card-content white-text">
 								<span class="card-title">Scinnapse</span>
-								<p>Scinnapse is the PC / Mac client that lets you take screenshots.</p>
+								<p>Scinnapse is the PC / Mac client that lets you take screenshots. As of now, it's a WIP and not ready to download at all.</p>
 							</div>
 							<div class="card-action">
-								<a href="#">Download</a>
+								<a href="#" disabled>Download</a>
 								<a href="#">Source code</a>
 							</div>
 						</div>
@@ -146,7 +163,7 @@
 							<div class="card blue-grey darken-1">
 								<div class="card-content white-text">
 									<span class="card-title">Scinnamon</span>
-									<p>Scinnamon is the Android / iOS companion app that let you upload picture and manage your account.</p>
+									<p>Scinnamon is the Android / iOS companion app that let you upload picture and manage your account. Not available yet.</p>
 								</div>
 								<div class="card-action">
 									<a href="#">Play store</a>
@@ -159,9 +176,108 @@
 		</div>
 		
 		<div id="guide" class="section no-pad-bot">
+			<div class="container">
+				<div id="tutorial" class="row">
+					<h4>Setting Scinna up</h4>
+					<div class="col s12">
+						<ul class="tabs">
+							<li class="tab col s3"><a href="#server-guide">Server</a></li>
+							<li class="tab col s3"><a href="#pc-guide">PC</a></li>
+							<li class="tab col s3"><a href="#smartphone-guide">Smartphone</a></li>
+						</ul>
+					</div>
+					<div id="server-guide" class="col s12">
+						<p>This part will be only useful if you want to use the self-hosted scinna server. If you plan to use the Scinnapse or Scinnamon clients just to take screenshots and saving them, or uploading them to other hosts (Like imgur, etc...) you don't need to follow this.</p>
+						<p>This tutorial expects you to use a Linux server and have some basic Linux knowledge. If you are using anything else, you are on your own. Due to the nature of the code, it will probably work on OSX and require a few tweaks on Windows. This will be solved in the future.</p>
+
+						<br />
+
+						<h6>Requirements</h6>
+
+						<ul>
+							<li>A linux server (Dedicated, VPS, Raspberry pi, etc...)</li>
+							<li>The nginx webserver installed (Used as a reverse proxy)</li>
+							<li>A (sub-)domain name that links to the server's IP</li>
+							<li>(Optional, but preferred) A SSL certificate (Let's Encrypt)</li>
+							<li>(Optional, but preferred) A database server running and with an account + database created for scinna</li> 
+							<li>20 minutes</li>
+						</ul>
+
+						<p>Connect via SSH to your webserver.</p>
+						<p>We'll create a user for the scinna instance, no need to set him a password: </p>
+						<pre><code>$ useradd -m scinna</code></pre>
+						<p>Lets download the server executable and create service to keep it running:</p>
+						<pre><code>$ cd /tmp
+$ wget https://TMP_URL_TO_REPLACE/ -o /usr/bin/scinna
+$ chmod +x /usr/bin/scinna
+$ scinna -gensysd > /etc/systemd/system/scinna
+$ systemctl enable --now scinna</code></pre>
+					<p>Scinna is now running, let's set up the reverse-proxy now. We're using nginx.</p>
+					<p>Here's a simple virtualhost just change your hostname and you're ready to go. Don't forget to restart the nginx service afterward.</p>
+					<pre><code>server {
+	listen 80;
+	server_name i.example.com;
+	return 301 https://$host$request_uri;
+}
+
+server {
+	listen 443 ssl http2;
+	server_name i.example.com;
+	include snippets/ssl.conf;
+	error_log  /home/scinna/error.log warn;
+	access_log /home/scinna/access.log combined;
+
+	client_max_body_size 5M; # You might want to change that depending on what size of picture you'll be uploading.
+
+	location / {
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_pass http://127.0.0.1:1635;
+	}
+}</code></pre>
+						<p>You're close to be done!</p>
+						<p>Just restart nginx, go to the specified domain name and follow the setup. It will lead you to the database initialization, account creation and server settings.</p>
+					</div>
+					<div id="pc-guide" class="col s12">
+						<p>Scinna is available for Windows, Linux and OS X.</p>
+						<p>Download the software for your operating system and set it up as you would with any other software.</p>
+						<p>For ArchLinux, you can find the <code class="pre">scinnapse</code> package in the AUR.</p>
+						<br />
+						<p>When you'll first run Scinnapse, it will ask you to login with your Scinna account.</p>
+						<p>If you don't have a Scinna server you can click on "No, thanks" and it will work with the scinna features disabled.</p>
+					</div>
+					
+					<div id="smartphone-guide" class="col s12">
+						<p>The Scinnamon app is a tool build to help you share picture from your smartphone.</p>
+						<p>Once you installed it, and logged into your scinna account, you can use the standard share feature of your smartphone and share it to Scinnamon.</p>
+						<p>It will ask you the title / description that you'd like and the link will be copied to your clipboard.</p>
+						<br />
+						<p>You'll be able to download this app from the Google Play Store and F-Droid for Android.</p>
+						<p>Unfortunately, since I develop only this app for mobile, I have no interest in having a 99$ yearly cost for Apple developer account so no luck there.</p>
+						<p>I'm no iOS expert, but you can maybe install the ipa with the AltStore and it's patched AltServer (<a href="https://www.reddit.com/r/jailbreak/comments/ejbi1w/release_install_ipa_files_using_windows/">Windows</a> / <a href="https://www.reddit.com/r/jailbreak/comments/ejtw9x/release_install_jailbreak_via_patched_altserver/">OS X</a>) on non-jailbroken devices. Jailbroken users should have no problem installing it themselves.</p>
+						<p>If ever, one day, the <a href="https://altstore.io/">AltStore</a> opens to 3rd-parties app, I will upload it there.</p>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div id="contribute" class="section no-pad-bot">
+			<div class="container valign-wrapper">
+				<div class="row center">
+					<div class="col s12 m6">
+						<h5>Want to contribute ?</h5>
+						<a href="https://github.com/scinna">Take a look at our Github</a>
+					</div>
+					<div class="col s12 m6">
+						<h5>Report a bug ? A suggestion ?</h5>
+						<p>Post an issue on <a href="https://github.com/scinna">Github</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="love" class="section no-pad-bot center-align">
+			<span>Made with <span style="color: #e25555;">&hearts;</span> by the <a href="https://github.com/orgs/scinna/people">Scinna team</a></span>
 		</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -169,6 +285,9 @@
 			document.addEventListener('DOMContentLoaded', function() {
 				var elems = document.querySelectorAll('.sidenav');
 				var instances = M.Sidenav.init(elems, {});
+
+				var tabs = document.querySelectorAll('.tabs');
+				var instanceTabs = M.Tabs.init(tabs, {});
 			});
 		</script>
 	</body>
