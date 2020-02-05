@@ -187,57 +187,9 @@
 						</ul>
 					</div>
 					<div id="server-guide" class="col s12">
-						<p>This part will be only useful if you want to use the self-hosted scinna server. If you plan to use the Scinnapse or Scinnamon clients just to take screenshots and saving them, or uploading them to other hosts (Like imgur, etc...) you don't need to follow this.</p>
-						<p>This tutorial expects you to use a Linux server and have some basic Linux knowledge. If you are using anything else, you are on your own. Due to the nature of the code, it will probably work on OSX and require a few tweaks on Windows. This will be solved in the future.</p>
-
-						<br />
-
-						<h6>Requirements</h6>
-
-						<ul>
-							<li>A linux server (Dedicated, VPS, Raspberry pi, etc...)</li>
-							<li>The nginx webserver installed (Used as a reverse proxy)</li>
-							<li>A (sub-)domain name that links to the server's IP</li>
-							<li>(Optional, but preferred) A SSL certificate (Let's Encrypt)</li>
-							<li>(Optional, but preferred) A database server running and with an account + database created for scinna</li> 
-							<li>(Optional, but preferred) A SMTP server for account validation and password recovery</li> 
-							<li>20 minutes</li>
-						</ul>
-
-						<p>Connect via SSH to your webserver.</p>
-						<p>We'll create a user for the scinna instance, no need to set him a password: </p>
-						<pre><code>$ useradd -m scinna</code></pre>
-						<p>Lets download the server executable and create service to keep it running:</p>
-						<pre><code>$ cd /tmp
-$ wget https://TMP_URL_TO_REPLACE/ -o /usr/bin/scinna
-$ chmod +x /usr/bin/scinna
-$ scinna -gensysd > /etc/systemd/system/scinna
-$ systemctl enable --now scinna</code></pre>
-					<p>Scinna is now running, let's set up the reverse-proxy now. We're using nginx.</p>
-					<p>Here's a simple virtualhost just change your hostname and you're ready to go. Don't forget to restart the nginx service afterward.</p>
-					<pre><code>server {
-	listen 80;
-	server_name i.example.com;
-	return 301 https://$host$request_uri;
-}
-
-server {
-	listen 443 ssl http2;
-	server_name i.example.com;
-	include snippets/ssl.conf;
-	error_log  /home/scinna/error.log warn;
-	access_log /home/scinna/access.log combined;
-
-	client_max_body_size 5M; # You might want to change that depending on what size of picture you'll be uploading.
-
-	location / {
-		proxy_set_header Host $host;
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_pass http://127.0.0.1:1635;
-	}
-}</code></pre>
-						<p>You're close to be done!</p>
-						<p>Just restart nginx, go to the specified domain name and follow the setup. It will lead you to the database initialization, account creation and server settings.</p>
+						<p>Setting the server up is quite easy to do.</p>
+						<p>You will require a server. If you don't have one, you can either rent one from a provider like [PulseHeberg](https://pulseheberg.com/) or the well-known [DigitalOcean](https://digitalocean.com), if you have high-speed internet, you might also set it up on a [Raspberry Pi](https://www.raspberrypi.org/)</p>	
+						<p>No matter which solution you choose, you can follow the official guide on [the wiki on Github](https://github.com/scinna/server/wiki)</p>
 					</div>
 					<div id="pc-guide" class="col s12">
 						<p>Scinna is available for Windows, Linux and OS X.</p>
