@@ -7,17 +7,15 @@ html {
 }
 
 /** General style **/
-a[href*="//"]:not([href*="janczewski.fr"]) {
+.underlined {
     color: black;
     background-image: linear-gradient(90deg, rgba(226,203,255,1) 0%, rgba(202,161,255,1) 50%, rgba(226,203,255,1) 100%);
     background-repeat: no-repeat;
     background-size: 100% 0.1em;
     background-position: 0 88%;
     transition: background-size 0.15s ease-in;
-}
-
-a[href*="//"]:not([href*="janczewski.fr"]):hover {
-    background-size: 100% 88%;
+    padding-bottom: .25em;
+    margin-bottom: .25em;
 }
 
 pre {
@@ -141,31 +139,6 @@ nav {
     background: #333335;
 }
 
-#why {
-    position: relative;
-}
-
-#why::before, #why::after {
-    position: absolute;
-    content: '';
-    pointer-events: none;
-	left: 50%;
-	width: 100px;
-	height: 100px;
-	-webkit-transform: translateX(-50%) rotate(45deg);
-	transform: translateX(-50%) rotate(45deg);
-}
-
-#why::before {
-    bottom: -50px;
-	background: #fff;
-}
-
-#why::after {
-    bottom: -50px;
-	z-index: 10;
-	background: inherit;
-}
 
 #why .card .card-image img {
     height: 5em;
@@ -177,11 +150,26 @@ nav {
 
 #download {
     background: #efefef;
-    box-shadow: inset 1px 1px 5px 0px;
+    box-shadow: inset 1px 1px 5px 0;
+    position: relative;
+}
+
+#separator {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+    margin-top: -50px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: white;
+    box-shadow: 1px 1px 5px 0;
+    -webkit-transform: translateX(-50%) rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
 }
 
 #download .container {
-    padding: 3em 0 3em 0;
+    padding: 4em 0 3em 0;
 }
 
 #download .card-action {
@@ -200,6 +188,10 @@ nav {
     background: white;
     padding-bottom: 7em;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+}
+
+h4 {
+    margin-bottom: 1em;
 }
 
 #guide .container {
